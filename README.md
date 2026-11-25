@@ -34,7 +34,7 @@ tp3-jenkins-docker/
 
 ## 1. Prérequis : Docker sur le nœud Jenkins
 
-- Machine : Windows, avec **Docker Desktop** (moteur WSL2) et **Jenkins** installé comme service Windows (port 9090).
+- Machine : Windows, avec **Docker Desktop** et **Jenkins** installé comme service Windows (port 9090).
 - Vérification :
 
 ```powershell
@@ -51,6 +51,8 @@ Le service Jenkins ne trouvait pas Docker au départ (erreur « 'docker' n'est p
 | Nom | Valeur |
 |---|---|
 | `PATH+DOCKER` | `C:\Users\<utilisateur>\AppData\Local\Programs\DockerDesktop\resources\bin` |
+
+> L'énoncé conseille d'exécuter le service Jenkins sous un compte utilisateur. Ici, le service tourne sous `NT AUTHORITY\SYSTEM` (résultat de `whoami`) ; Docker fonctionne quand même grâce à la variable `PATH+DOCKER`.
 
 Vérification dans un pipeline Jenkins (job `TP3-Docker-Check`) :
 
